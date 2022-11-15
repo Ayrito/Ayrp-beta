@@ -3,7 +3,7 @@
 @section('content')
 
 
-<div class="modal-content center" style="padding-right: 500px; padding-left: 500px;">
+<div class="modal-content center" style="padding-right: 30%; padding-left: 30%;">
         <h4>{{ __('Register Form') }}</h4>
         <br>
 

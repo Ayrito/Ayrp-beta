@@ -3,8 +3,8 @@
 @section('content')
 
 
-<div class="modal-content center" style="padding-right: 500px; padding-left: 500px;">
-        <h4>Login Form</h4>
+<div class="modal-content center" style="padding-right: 30%; padding-left: 30%;">
+        <h4>{{ __('Login Form') }}</h4>
         <br>
 
         <form method="POST" action="{{ route('login') }}">
