@@ -15,14 +15,13 @@
 
     <link rel="stylesheet" type="text/css" href="{{ URL::asset("css/materialize.css") }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::asset("css/searchbar.css") }} ">
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset("css/style") }} ">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset("css/style.css") }} ">
 
 
 
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Ayrp Project</title>
     <?php error_reporting(0); ?>
         <!--Search Bar-->
 
@@ -68,7 +67,7 @@
                 <li><a class="waves-light modal-trigger" href="#modal1"><i class="material-icons">view_module</i></a></li>
                 <!-- Right Side Of Navbar -->
                     
-                        <!-- Authentication Links -->
+					<!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -79,26 +78,20 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
+						<li><a href="#" class='dropdown-trigger btn' href='#' role="button" data-target='dropdown1'>{{ Auth::user()->name }} </a></li>
+                            
+							<li class="nav-item dropdown">
                                 
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                            
                             </li>
                         @endguest
-                <li><a href="#" class='dropdown-trigger btn btn-floating' href='#' data-target='dropdown1'><i class="material-icons">more_vert</i></a></li>
-                <li></li>
+                        
+                
+                <li><a href="#" class='dropdown-trigger btn btn-floating' href='#' data-target='dropdown2'><i class="material-icons">more_vert</i></a></li>
+				<li></li>
             </ul>
 
             <!-- Modal Structure -->
@@ -148,8 +141,17 @@
     </div>
 </nav>
 
-<!-- dot button -->
 <ul id='dropdown1' class='dropdown-content'>
+    <li><a class="dropdown-item" href="{{ route('logout') }}"
+           onclick="event.preventDefault();
+           document.getElementById('logout-form').submit();">
+        {{ __('Logout') }}
+     </a></li>
+</ul>
+
+
+<!-- dot button -->
+<ul id='dropdown2' class='dropdown-content'>
     <li><a href="#login" class="modal-trigger"><i class="material-icons"></i>Login</a></li>
     <li><a href="#register" class="modal-trigger">Register</a></li>
     <li class="divider" tabindex="-1"></li>
