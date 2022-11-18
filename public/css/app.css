@@ -547,7 +547,7 @@ pre code {
   overflow-y: scroll;
 }
 
-.container {
+.containerbooot {
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
@@ -2286,7 +2286,7 @@ textarea.form-control {
   }
 }
 
-.btn {
+.btnbooot {
   display: inline-block;
   font-weight: 400;
   text-align: center;
