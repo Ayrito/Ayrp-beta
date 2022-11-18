@@ -2,9 +2,8 @@
 
 
 <main>
-<?php
-include 'slide2.php';
-?>
+
+@include('slide2')
 
 
 <div id="clist">

@@ -18,7 +18,6 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Styles -->
-	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/materialize.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/searchbar.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/style.css') }}" rel="stylesheet">
@@ -138,7 +137,7 @@
 
 <!-- dot button -->
 <ul id='dropdown2' class='dropdown-content'>
-    <li><a href="#account" class="modal-trigger black-text"><i class="material-icons"></i>acccount</a></li>
+    <li><a href="#account" class="modal-trigger black-text"><i class="material-icons"></i>account</a></li>
     <li><a href="#settings" class="modal-trigger black-text">Settings</a></li>
     <li class="divider" tabindex="-1"></li>
     <li><a href="#help" class="modal-trigger black-text">Help</a></li>

@@ -25,7 +25,7 @@
 	<div class="row">
 	<div class="col s4">
 		<label><div style="min-width:160px;">Gender Select</div></label>
-	  <select class="browser-default" name="select" required style="min-width:160px;">
+	  <select class="browser-default" name="select" required style="min-width:170px;">
 		<option value="" disabled selected>Choose your Gender</option>
 	    <option value="1">Male</option>
 	    <option value="2">Female</option>

@@ -14,7 +14,7 @@
         <div class="row">
           <div class="col l6 m8 s12">
         <h2 class="grey-text text-darken-1">
-         Beta 0.1.2 Release!
+         Beta 0.1.4 Release!
 		</h2>
 		<p class="grey-text text-darken-2">you can check the improvement here...</p>
 
@@ -24,8 +24,9 @@
   		<div id="modal2" class="modal">
   		  <div class="modal-content">
    		   <h4>Change Log</h4>
-			  <p>added Article function!</p>
-			  <p>added new menu functions!</p>
+			  <p>added Laravel framework!</p>
+			  <p>added pgsql database!</p>
+			  <p>added new Design!</p>
 			  <p>fixed some bugs.</p>
   		  </div>
   		  <div class="modal-footer">
