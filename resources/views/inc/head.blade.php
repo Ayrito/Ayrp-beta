@@ -4,81 +4,92 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+	
     <title>Ayrp Project</title>
 
+
+
+
+
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <!--Import materialize.css-->
     <!-- Styles -->
-
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset("css/materialize.css") }}">
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset("css/searchbar.css") }} ">
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset("css/style.css") }} ">
-
-
-
+	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/materialize.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/searchbar.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <?php error_reporting(0); ?>
-        <!--Search Bar-->
+        
 
 
+		<!--Main Navigation-->
+		
 
-
-</head>
-
-
-<body>
-
-<!-- Navigation -->
-
-<nav class="nav-extended">
-
-    <!-- Side Nav -->
-    <div>
+		<!--Mobile Navigation-->
         <ul id="slide-out" class="sidenav">
             <li><div class="user-view">
                     <div class="background">
                         <img src="{{ URL::asset('images/nav-bg.png') }}">
                     </div>
                     <a href="#user"><img class="circle" src="{{ URL::asset('images/logo.png') }}"></a>
-                    <a href="#name"><span class="white-text name">Name</span></a>
-                    <a href="#email"><span class="white-text email">mail@exampel.com</span></a>
+                    <a href="#name"><span class="white-text name">{{ Auth::user()->name }}</span></a>
+                    <a href="#email"><span class="white-text email">{{ Auth::user()->email }}</span></a>
                 </div></li>
-            <li><a href="../welcome.blade.php"><i class="material-icons">home</i>Home</a></li>
+            <li><a href="{{ url('/') }}"><i class="material-icons">home</i>Home</a></li>
             <li><a href="#!"><i class="material-icons">cloud</i>Account</a></li>
             <li><a href="#!">Status</a></li>
             <li><div class="divider"></div></li>
             <li><a class="subheader">info</a></li>
-			<li><a class="waves-effect" href="{{ route('register') }}">{{ __('Register') }}</a></li>
-			<li><a class="waves-effect" href="{{ route('login') }}">{{ __('Login') }}</a></li>
+			<li><a href="{{ route('register') }}">{{ __('Register') }}</a></li>
+			<li><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
         </ul>
-        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+		<!--Mobile Navigation-->
+		
+		
+<!-- Navigation -->
+<div class="navbar-fixed">
+<nav class="nav-extended">
+
+    <!-- Side Nav -->
+    <div>
+        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons black-text">menu</i></a>
     </div>
     <!-- Side Nav -->
 
     <div class="nav-wrapper">
         <div class="z-depth-5">
-            <div class="left-align"><a href="{{ url('/') }}" class="brand-logo left hide-on-med-and-down" style="padding-left: 20px;">Ayrp Project</a></div>
+            <div class="left-align"><a href="{{ url('/') }}" class="brand-logo left hide-on-med-and-down black-text" style="padding-left: 50px;">Ayrp</a></div>
+			
+		<ul class="container hide-on-med-and-down">
+        <li><a class="black-text" href="{{ url('/about') }}">About</a></li>
+        <li><a class="black-text" href="{{ url('/archive') }}">Archive</a></li>
+        <li><a class="black-text" target="_blank" href="https://ayrito.github.io/ayrp-cv/">Blog</a></li>
+		</ul>
+			
             <ul class="right hide-on-med-and-down">
-                <li><a class="waves-light modal-trigger" href="#modal1"><i class="material-icons">view_module</i></a></li>
+                
                 <!-- Right Side Of Navbar -->
                     
 					<!-- Authentication Links -->
+					<li class="divider">
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="black-text nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="black-text nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
-						<li><a href="#" class='dropdown-trigger btn' href='#' role="button" data-target='dropdown1'>{{ Auth::user()->name }} </a></li>
+						<li><a href="#" class='dropdown-trigger btn blue' href='#' role="button" data-target='dropdown1'>{{ Auth::user()->name }} </a></li>
                             
 							<li class="nav-item dropdown">
                                 
@@ -88,38 +99,10 @@
                             
                             </li>
                         @endguest
-                        
+                    </li>
                 
-                <li><a href="#" class='dropdown-trigger btn btn-floating' href='#' data-target='dropdown2'><i class="material-icons">more_vert</i></a></li>
-				<li></li>
+                <li><a href="#" class='dropdown-trigger btn btn-floating white' href='#' data-target='dropdown2'><i class="material-icons black-text">more_vert</i></a></li>
             </ul>
-
-            <!-- Modal Structure -->
-            <div id="modal1" style="background-color: #2196f3; margin: 0; height: 100%; overflow: hidden ; margin: 0; height: 100%;" class="modal bottom-sheet">
-                <div class="modal-content">
-
-                    <h4>Category
-                        <a href="#!" style="background-color: green; color: white;" class="modal-close waves-effect right waves-green btn-flat">Close</a>
-                    </h4>
-                    @include('slide')
-                    <div class="owl-carousel owl-theme mt-5">
-                        <div class="item"><h4>1</h4></div>
-                        <div class="item"><h4>2</h4></div>
-                        <div class="item"><h4>3</h4></div>
-                        <div class="item"><h4>4</h4></div>
-                        <div class="item"><h4>5</h4></div>
-                        <div class="item"><h4>6</h4></div>
-                        <div class="item"><h4>7</h4></div>
-                        <div class="item"><h4>8</h4></div>
-                        <div class="item"><h4>9</h4></div>
-                        <div class="item"><h4>10</h4></div>
-                        <div class="item"><h4>11</h4></div>
-                        <div class="item"><h4>12</h4></div>
-                    </div>
-                </div>
-                <div class="modal-footer" style="background-color: #2196f3;">
-                </div>
-            </div>
 
             <!-- search -->
             <form action="" class="browser-default right">
@@ -140,9 +123,12 @@
         </div>
     </div>
 </nav>
-
+</div>
 <ul id='dropdown1' class='dropdown-content'>
-    <li><a class="dropdown-item" href="{{ route('logout') }}"
+	<li><a class="dropdown-item black-text" href="/home">
+        {{ __('Account') }}
+     </a></li>
+    <li><a class="dropdown-item black-text" href="{{ route('logout') }}"
            onclick="event.preventDefault();
            document.getElementById('logout-form').submit();">
         {{ __('Logout') }}
@@ -152,120 +138,17 @@
 
 <!-- dot button -->
 <ul id='dropdown2' class='dropdown-content'>
-    <li><a href="#login" class="modal-trigger"><i class="material-icons"></i>Login</a></li>
-    <li><a href="#register" class="modal-trigger">Register</a></li>
+    <li><a href="#account" class="modal-trigger black-text"><i class="material-icons"></i>acccount</a></li>
+    <li><a href="#settings" class="modal-trigger black-text">Settings</a></li>
     <li class="divider" tabindex="-1"></li>
-    <li><a href="#help" class="modal-trigger">Help</a></li>
-    <li><a href="#contact" class="modal-trigger"><i class="material-icons"></i>contact</a></li>
-    <li><a href="#feedback" class="modal-trigger"><i class="material-icons"></i>feedback</a></li>
+    <li><a href="#help" class="modal-trigger black-text">Help</a></li>
+    <li><a href="#contact" class="modal-trigger black-text"><i class="material-icons"></i>contact</a></li>
+    <li><a href="#feedback" class="modal-trigger black-text"><i class="material-icons"></i>feedback</a></li>
 </ul>
 <!-- dot button -->
 
 
-<!--login-->
 
-
-<div id="login" class="modal">
-    <h5 class="modal-close" style="padding-left: 20px;">&#10005;</h5>
-    <div class="modal-content center">
-        <h4>Login Form</h4>
-        <br>
-
-        <form action="#">
-
-            <div class="input-field">
-                <i class="material-icons prefix">person</i>
-                <input type="text" id="name">
-                <label for="name">Username</label>
-            </div>
-            <br>
-
-            <div class="input-field">
-                <i class="material-icons prefix">lock</i>
-                <input type="password" id="pass">
-                <label for="pass">Password</label>
-            </div>
-            <br>
-
-            <label class="left">
-                <input  type="checkbox" id="check">
-                <span for="check">Remember Me</span>
-            </label>
-            <br>
-            <br>
-
-            <input type="submit" value="Login" class="btn btn-large">
-
-            <div class="row">
-                <div class="input-field col s6 m6 l6">
-                    <p class="margin left medium-small"><a href="#">Register Now!</a></p>
-                </div>
-                <div class="input-field col s6 m6 l6">
-                    <p class="margin right-align medium-small"><a href="#">Forgot password?</a></p>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-
-<!--login-->
-
-
-<!--register-->
-
-<div class="container">
-    <div class="row">
-        <div id="register" class="modal">
-            <h5 class="modal-close" style="padding-left: 20px;">&#10005;</h5>
-            <div class="modal-content">
-                <form class="col s12" id="reg-form">
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input id="first_name" type="text" class="validate" required>
-                            <label for="first_name">First Name</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input id="last_name" type="text" class="validate" required>
-                            <label for="last_name">Last Name</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="email" type="email" class="validate" required>
-                            <label for="email">Email</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="password" type="password" class="validate" minlength="6" required>
-                            <label for="password">Password</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <label style="padding-left: 100px">
-                                <input name="group1" type="radio"/>
-                                <span>Female</span>
-                            </label>
-                            <label>
-                                <input name="group1" type="radio"/>
-                                <span>Male</span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="input-field col s6 right">
-                        <button class="btn btn-large btn-register waves-effect waves-light" type="submit" name="action">Register
-                            <i class="material-icons right">done</i>
-                        </button>
-                    </div>
-
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--register-->
 
 <!--help-->
 
@@ -403,3 +286,11 @@
 </div>
 
 <!--Feedback-->
+
+
+	<!--End Main Navigation-->
+	
+</head>
+
+<body>
+<div id="app">

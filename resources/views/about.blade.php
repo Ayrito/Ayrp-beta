@@ -41,7 +41,7 @@
       <div class="parallax"><img src="images/parallax1.png"></div>
     </div>
 	    <div class="section white">
-      <div class="row container">
+      <div class="container">
         <h2 class="grey-text text-darken-1">Updates</h2>
         <p class="grey-text text-darken-3 lighten-3">More Update and changes Soon.</p>
       </div>

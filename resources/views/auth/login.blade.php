@@ -2,9 +2,10 @@
 
 @section('content')
 
-
-<div class="modal-content center" style="padding-right: 30%; padding-left: 30%;">
-        <h4>{{ __('Login Form') }}</h4>
+<div class="container">
+<div class="container">
+<div class="content col s12 m3 container">
+        <h5 class="center">{{ __('Login') }}</h5>
         <br>
 
         <form method="POST" action="{{ route('login') }}">
@@ -14,9 +15,9 @@
                 <i class="material-icons prefix">email</i>
 				<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                 <label for="email">{{ __('E-Mail Address') }}</label>
-				@error('email')
+				@error($errors->has('email'))
                     <span class="invalid-feedback" role="alert">
-                      <strong>{{ $message }}</strong>
+                      <strong>{{ $errors->first('email') }}</strong>
                     </span>
                 @enderror
             </div>
@@ -25,10 +26,10 @@
             <div class="input-field">
                 <i class="material-icons prefix">lock</i>
                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-				<label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-				@error('password')
+				<label for="password">{{ __('Password') }}</label>
+				@error($errors->has('password'))
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
+                        <strong>{{ $errors->first('password') }}</strong>
                     </span>
                 @enderror
             </div>
@@ -41,7 +42,7 @@
             <br>
             <br>
 
-			<button type="submit" class="btn btn-large">
+			<button type="submit" class="btn btn-large blue">
                 {{ __('Login') }}
             </button>
 
@@ -60,6 +61,9 @@
                 </div>
             </div>
         </form>
-</div>
-               
+		<br>
+		
+	</div>
+      </div>  
+	  </div>
 @endsection
