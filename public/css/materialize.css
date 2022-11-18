@@ -2944,9 +2944,11 @@ ul.staggered-list li {
 }
 
 .page-footer {
+	margin-top: auto;
+	bottom: 0;
   padding-top: 20px;
   color: #fff;
-  background-color: #ee6e73;
+  background-color: rgba(51, 51, 51, 0.08);
 }
 
 .page-footer .footer-copyright {
@@ -4271,7 +4273,7 @@ table span.badge {
 
 nav {
   color: #fff;
-  background-color: #1e88e5;
+  background-color: #fff;
   width: 100%;
   height: 56px;
   line-height: 56px;
@@ -4772,7 +4774,7 @@ small {
 }
 
 .card.small .card-image + .card-content, .card.medium .card-image + .card-content, .card.large .card-image + .card-content {
-  max-height: 40%;
+  max-height: 100%;
 }
 
 .card.small .card-content, .card.medium .card-content, .card.large .card-content {
